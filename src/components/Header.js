@@ -1,25 +1,28 @@
 import React from 'react';
 import Link from 'next/link';
-import LogoClement from '..public/assets/images/clement-wds-white.png';
+import LogoClement from '../public/assets/images/clement-wds-white.png';
 
 function Header() {
     return(
         <div className="header-main">
+            <div className="header-logo">
+                <img src={LogoClement.src} alt="Clément Wds" />
+            </div>
             <nav className="header-nav">
-                <ul className="header-nav-list">
-                    <li class="header-nav-item">
+                <ul className="nav-list">
+                    <li className="nav-item">
                         <Link href="/">
-                            <a className="header-nav-link">Home</a>
+                            <a className="nav-link">Home</a>
                         </Link>
                     </li>
-                    <li class="header-nav-item">
+                    <li className="nav-item">
                         <Link href="/about">
-                            <a className="header-nav-link">About Us</a>
+                            <a className="nav-link">About Us</a>
                         </Link>
                     </li>
-                    <li class="header-nav-item">
-                        <Link href="/blog/hello-world">
-                            <a className="header-nav-link">Blog Post</a>
+                    <li className="nav-item">
+                        <Link href="/eshop">
+                            <a className="nav-link">E-Shop</a>
                         </Link>
                     </li>
                 </ul>

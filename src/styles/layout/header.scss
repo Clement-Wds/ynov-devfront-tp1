@@ -1,0 +1,36 @@
+.header {
+    &-main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: $darkColor;
+    }
+    &-logo {
+        img {
+            width: 200px;
+        }
+    }
+    &-nav {
+        .nav {
+            &-list {
+                display: flex;
+                list-style: none;
+            }
+            &-item {
+                margin: 0px 20px;
+            }
+            &-link {
+                font-weight: bold;
+                font-size: 20px;
+                color: white;
+                &:hover {
+                    color: $secondaryColor;
+                }
+            }
+        }
+        // .nav__list {}
+        // .nav__item {}
+        // .nav__link {}
+    }
+}

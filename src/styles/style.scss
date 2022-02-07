@@ -1,5 +1,13 @@
+//Helpers
 @import './helpers/variables.scss';
+
+//Base
 @import './base/base.scss';
-@import './theme/header.scss';
-@import './theme/footer.scss';
+
+//Theme
 @import './theme/title.scss';
+@import './theme/text-align.scss';
+
+//Layout
+@import './layout/header.scss';
+@import './layout/footer.scss';
