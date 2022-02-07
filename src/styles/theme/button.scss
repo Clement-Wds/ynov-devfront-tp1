@@ -1,0 +1,23 @@
+.button{
+    border: none;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+
+    &-primary{
+        background-color: $primaryColor;
+        color: white;
+    }
+
+    &-secondary{
+        background-color: $secondaryColor;
+        color: $darkColor;
+    }
+
+    &-dark{
+        background-color: $darkColor;
+        color: white;
+    }
+}
