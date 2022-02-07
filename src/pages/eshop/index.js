@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import TitlePage from '../../components/TitlePage';
 
 
@@ -31,7 +32,12 @@ const Index = () => {
                             </div>
                             <div className='card-footer'>
                                 <p>{product.price}</p>
-                                <button class="button button-primary">Add to cart</button>
+                                {/* <Link href={'/eshop/' + $props.product.id}>
+                                    <a>
+                                        Voir le produit
+                                    </a>
+                                </Link> */}
+                                <button class="button button-primary">Ajouter au panier</button>
                             </div>
                         </div>
                     ))
