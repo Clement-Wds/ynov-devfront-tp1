@@ -10,14 +10,23 @@
         background-color: $primaryColor;
         color: white;
     }
+    &-primary:hover{
+        background-color: $primaryColorHover;
+    }
 
     &-secondary{
         background-color: $secondaryColor;
         color: $darkColor;
     }
+    &-secondary:hover{
+        background-color: $secondaryColorHover;
+    }
 
     &-dark{
         background-color: $darkColor;
         color: white;
+    }
+    &-dark:hover{
+        background-color: $darkColorHover;
     }
 }

@@ -1,0 +1,21 @@
+.products-grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .product-card{
+        width: 15%;
+        margin: 20px;
+        .product-header{
+            img{
+                width: 150px;
+                height: auto;
+            }
+        }
+        .product-body{
+            h2{
+                font-size: 15px;
+                font-weight: bold;
+            }
+        }
+    }
+}
