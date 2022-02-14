@@ -18,18 +18,34 @@ const Index = () => {
     //Destructuration d'objet EXEMPLE
     const {prop1, prop2} = myObj;
 
+    const addToCart = (product) => {
+        let array = [];
+        if(localStorage.getItem('cart')){
+            let obj = JSON.parse(localStorage.getItem('cart'));
+            
+            for (let i = 0; i < obj.length; i++) {
+                array.push(obj[i]);
+            }
+
+            array.push(product);
+            localStorage.setItem('cart', JSON.stringify(array));
+            
+        }else{
+            array.push(product);
+            localStorage.setItem('cart', JSON.stringify(array));
+        }
+        
+    }
+
     useEffect(() => {
 
         //Destructuration de l'objet router
         const {id} = router.query;
 
         fetch(`https://fakestoreapi.com/products/${id}`)
-            .then(
-                (res) => {
-                    console.log(res);
-                    return res.json();
-            })
-            .then(data => setProduct(data));
+            .then(res => res.json())
+            .then(data => setProduct(data))
+            .catch(err => console.error(err));
 
     }, []);
 
@@ -39,7 +55,7 @@ const Index = () => {
 
             <div className="text-center">
                 <ProductPrice price={product && product.price} currency="€"/>
-                <Button type="button" classes="button button-primary" click={() => console.log(product)} content="Ajouter au panier" />  
+                <Button type="button" classes="button button-primary" click={() => addToCart(product)} content="Ajouter au panier" />  
             </div>
         </div>
     );

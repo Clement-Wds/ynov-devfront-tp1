@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import TitlePage from "../../components/TitlePage";
 import ProductCard from "../../components/ProductCard";
+
 const Index = () => {
     const [products, setProducts] = useState();
 

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import Button from '/src/components/button';
 
 function ProductCard(props) {
   return (
@@ -12,7 +13,7 @@ function ProductCard(props) {
             <p>{props.product.price} € </p>
         </div>
         <div className="product-footer">
-          <button className="button button-primary">Ajouter au panier</button>
+          <Button type="button" classes="button button-primary" click={() => console.log(props.product)} content="Ajouter au panier" />
           <Link href={`/eshop/${props.product.id}`}>
             <a>
               Voir le Produit
