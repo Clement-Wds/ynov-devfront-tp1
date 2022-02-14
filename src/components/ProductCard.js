@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 function ProductCard(props) {
@@ -11,7 +12,12 @@ function ProductCard(props) {
             <p>{props.product.price} € </p>
         </div>
         <div className="product-footer">
-        <button className="button button-primary">Ajouter au panier</button>
+          <button className="button button-primary">Ajouter au panier</button>
+          <Link href={`/eshop/${props.product.id}`}>
+            <a>
+              Voir le Produit
+            </a>
+          </Link>
         </div>
     </div>
   );
