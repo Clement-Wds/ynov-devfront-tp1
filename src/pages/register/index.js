@@ -14,15 +14,17 @@ const Index = () => {
 
         <form action="" method="">
 
-            <Input classes="form-input" type="text" name="firstname" id="input-firstname" required="false" placeholder="Prénom" onChange="" />
-            <Input classes="form-input" type="text" name="lastname" id="input-lastname" required="false" placeholder="Nom" onChange="" />
-            <Input classes="form-input" type="email" name="email" id="input-email" required="true" placeholder="Email" onChange="" />
-            <Input classes="form-input" type="password" name="password" id="input-password" required="true" placeholder="Mot de passe" onChange="" />
+            <div className="form-group">
+                <Input classes="form-input" type="text" name="firstname" id="input-firstname" required="false" placeholder="Prénom" onChange={() => console.log('.')} />
+                <Input classes="form-input" type="text" name="lastname" id="input-lastname" required="false" placeholder="Nom" onChange={() => console.log('.')} />
+                <Input classes="form-input" type="email" name="email" id="input-email" required="true" placeholder="Email" onChange={() => console.log('.')} />
+                <Input classes="form-input" type="password" name="password" id="input-password" required="true" placeholder="Mot de passe" onChange={() => console.log('.')} />
 
-            <Button type="submit" classes="button button-primary" click="" content="S'Inscrire" />
-            <Link href="/login">
-                <a>Se connecter</a>
-            </Link>
+                <Button type="submit" classes="button button-primary" click={() => console.log('.')} content="S'Inscrire" />
+                <Link href="/login">
+                    <a>Se connecter</a>
+                </Link>
+            </div>
 
         </form>
 

@@ -1,6 +1,17 @@
+.form-group{
+    margin: 3rem;
+}
+
 .form-input{
     width: 100%;
     padding: 12px 20px;
+    border-radius: 5px;
     margin: 8px 0;
     box-sizing: border-box;
+    &:focus{
+        transition: all 0.3s;
+        border: 2px solid $primaryColor;
+        outline: none;
+        background-color: rgb(239, 239, 252);
+    }
 }

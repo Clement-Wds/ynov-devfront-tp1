@@ -14,14 +14,16 @@ const Index = () => {
 
         <form action="" method="">
 
-            <Input classes="form-input" type="email" name="email" id="input-email" required="true" placeholder="Email" onChange="" />
-            <Input classes="form-input" type="password" name="password" id="input-password" required="true" placeholder="Mot de passe" onChange="" />
+            <div className="form-group">
+                <Input classes="form-input" type="email" name="email" id="input-email" required="true" placeholder="Email" onChange={() => console.log('.')} />
+                <Input classes="form-input" type="password" name="password" id="input-password" required="true" placeholder="Mot de passe" onChange={() => console.log('.')} />
 
-            <Button type="submit" classes="button button-primary" click="" content="Se connecter" />
-            <Link href="/register">
-                <a>S'inscrire</a>
-            </Link>
-
+                <Button type="submit" classes="button button-primary" click={() => console.log('.')} content="Se connecter" />
+                <Link href="/register">
+                    <a>S'inscrire</a>
+                </Link>
+            </div>
+            
         </form>
 
     </div>
