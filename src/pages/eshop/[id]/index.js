@@ -24,8 +24,6 @@ const Index = () => {
     console.log(indexOfExistingUser);
     console.log(users[indexOfExistingUser].firstName);
 
-    
-
     //EXEMPLE
     const myObj = {
         prop1: 'test',
@@ -55,6 +53,7 @@ const Index = () => {
 
             const indexOfExistingProduct = cartArray.findIndex(productItem => productItem.id === productToInsert.id);
             console.log(indexOfExistingProduct);
+            //Si le produit n'a pas deja été ajouté
             if(indexOfExistingProduct == -1){
                 cartArray.push(productToInsert);
             }else{
@@ -62,7 +61,8 @@ const Index = () => {
             }
 
             localStorage.setItem('cart', JSON.stringify(cartArray));
-            
+        
+        //Si localstorage est vide
         }else{
             array.push(productToInsert);
             localStorage.setItem('cart', JSON.stringify(cartArray));
