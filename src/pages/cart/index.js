@@ -14,8 +14,9 @@ const Index = () => {
   }
 
   useEffect(() => {
-    console.log("Total Price : " + cart.reduce((total, product) => total + (product.quantity * product.price), 0));
-    console.log("Total Quantity : " + cart.reduce((total, product) => total + (product.quantity), 0));
+
+    setTotal(cart.reduce((total, product) => total + (product.quantity * product.price), 0));
+    setTotalQuantity(cart.reduce((total, product) => total + (product.quantity), 0));
     
   }, []);
 
@@ -32,6 +33,8 @@ const Index = () => {
     cartArray.pop(indexOfExistingProduct);
     localStorage.setItem('cart', JSON.stringify(cartArray));
     setCart(JSON.parse(localStorage.getItem("cart")));
+    setTotal(cart.reduce((total, product) => total + (product.quantity * product.price), 0));
+    setTotalQuantity(cart.reduce((total, product) => total + (product.quantity), 0));
   }
 
   const manageQuantity = (element, increment) => {
@@ -54,6 +57,8 @@ const Index = () => {
     
     localStorage.setItem('cart', JSON.stringify(cartArray));
     setCart(JSON.parse(localStorage.getItem("cart")));
+    setTotal(cart.reduce((total, product) => total + (product.quantity * product.price), 0));
+    setTotalQuantity(cart.reduce((total, product) => total + (product.quantity), 0));
   }
 
   return (
@@ -65,8 +70,8 @@ const Index = () => {
           <tr>
             <th>Nom</th>
             <th>Prix</th>
-            <th>Quantité</th>
-            <th>Total</th>
+            <th>Quantité : {totalQuantity}</th>
+            <th>Total : {total}€</th>
             <th></th>
           </tr>
         </thead>
