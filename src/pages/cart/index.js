@@ -4,7 +4,20 @@ import TitlePage from "/src/components/TitlePage";
 import Button from "/src/components/Button";
 
 const Index = () => {
-  const [cart, setCart] = useState();
+  const [cart, setCart] = useState(typeof window !== "undefined" ? JSON.parse(localStorage.getItem("cart")) : []);
+  const [total, setTotal] = useState(0);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  
+  const deleteCart = () => {
+    localStorage.removeItem("cart");
+    setCart(null);
+  }
+
+  useEffect(() => {
+    console.log("Total Price : " + cart.reduce((total, product) => total + (product.quantity * product.price), 0));
+    console.log("Total Quantity : " + cart.reduce((total, product) => total + (product.quantity), 0));
+    
+  }, []);
 
   const deleteToCart = (element) => {
     let cartArray = [];
@@ -43,10 +56,6 @@ const Index = () => {
     setCart(JSON.parse(localStorage.getItem("cart")));
   }
 
-  useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")));
-  }, []);
-
   return (
     <div>
       <TitlePage title="Panier" />
@@ -75,7 +84,7 @@ const Index = () => {
                     {cartItem.quantity}
                     <button onClick={() => manageQuantity(cartItem, '+')}>+</button>
                   </td>
-                  <td>{cartItem.price * cartItem.quantity}€</td>
+                  <td>{(cartItem.price * cartItem.quantity).toFixed(2)}€</td>
                   <td>
                   <Button type="button" classes="button button-secondary" click={() => deleteToCart(cartItem)} content="Supprimer" />  
                   </td>
