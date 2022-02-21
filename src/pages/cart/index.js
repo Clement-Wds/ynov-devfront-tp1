@@ -16,7 +16,7 @@ const Index = () => {
 
     console.log(element);
     const indexOfExistingProduct = cartArray.findIndex(productItem => productItem.id === element.id);
-    cartArray.splice(indexOfExistingProduct);
+    cartArray.pop(indexOfExistingProduct);
     localStorage.setItem('cart', JSON.stringify(cartArray));
     setCart(JSON.parse(localStorage.getItem("cart")));
   }
@@ -84,6 +84,9 @@ const Index = () => {
             ) : (
               <tr>
                 <td>Votre panier est vide</td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td></td>
               </tr>
             )
