@@ -52,7 +52,6 @@ const Index = () => {
             }
 
             const indexOfExistingProduct = cartArray.findIndex(productItem => productItem.id === productToInsert.id);
-            console.log(indexOfExistingProduct);
             //Si le produit n'a pas deja été ajouté
             if(indexOfExistingProduct == -1){
                 cartArray.push(productToInsert);
@@ -64,7 +63,7 @@ const Index = () => {
         
         //Si localstorage est vide
         }else{
-            array.push(productToInsert);
+            cartArray.push(productToInsert);
             localStorage.setItem('cart', JSON.stringify(cartArray));
         }
         
