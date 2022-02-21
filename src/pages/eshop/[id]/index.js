@@ -9,6 +9,23 @@ const Index = () => {
     const router = useRouter();
     const [product, setProduct] = useState();
 
+    const users = [
+        {
+            id: 1,
+            firstName:'Clement'
+        },
+        {
+            id: 2,
+            firstName:'Faouizi'
+        }
+    ]
+
+    const indexOfExistingUser = users.findIndex(user => user.id === 2);
+    console.log(indexOfExistingUser);
+    console.log(users[indexOfExistingUser].firstName);
+
+    
+
     //EXEMPLE
     const myObj = {
         prop1: 'test',
@@ -17,22 +34,38 @@ const Index = () => {
 
     //Destructuration d'objet EXEMPLE
     const {prop1, prop2} = myObj;
+    
+    const addToCart = (element) => {
+        //On créer un nouvel objet avec une nouvelle propriété quantity
+        let productToInsert = {
+            id: element.id,
+            title: element.title,
+            image: element.image,
+            price: element.price,
+            quantity: 1
+        };
 
-    const addToCart = (product) => {
-        let array = [];
+        let cartArray = [];
         if(localStorage.getItem('cart')){
             let obj = JSON.parse(localStorage.getItem('cart'));
             
             for (let i = 0; i < obj.length; i++) {
-                array.push(obj[i]);
+                cartArray.push(obj[i]);
             }
 
-            array.push(product);
-            localStorage.setItem('cart', JSON.stringify(array));
+            const indexOfExistingProduct = cartArray.findIndex(productItem => productItem.id === productToInsert.id);
+            console.log(indexOfExistingProduct);
+            if(indexOfExistingProduct == -1){
+                cartArray.push(productToInsert);
+            }else{
+                cartArray[indexOfExistingProduct].quantity ++;
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cartArray));
             
         }else{
-            array.push(product);
-            localStorage.setItem('cart', JSON.stringify(array));
+            array.push(productToInsert);
+            localStorage.setItem('cart', JSON.stringify(cartArray));
         }
         
     }
