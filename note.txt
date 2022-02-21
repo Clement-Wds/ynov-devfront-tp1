@@ -1,0 +1,20 @@
+Page Login :
+-> champs : 
+    - Mot de passe
+    - Email
+
+Page Register :
+-> Champs :
+    - firstName
+    - lastName
+    - Email
+    - Password
+
+Composant input :
+    - classes
+    - type
+    - name
+    - id
+    - required
+    - placeholder
+    - onchange = function
