@@ -33,8 +33,6 @@ const Index = () => {
     cartArray.pop(indexOfExistingProduct);
     localStorage.setItem('cart', JSON.stringify(cartArray));
     setCart(JSON.parse(localStorage.getItem("cart")));
-    setTotal(cart.reduce((total, product) => total + (product.quantity * product.price), 0));
-    setTotalQuantity(cart.reduce((total, product) => total + (product.quantity), 0));
   }
 
   const manageQuantity = (element, increment) => {
@@ -57,21 +55,35 @@ const Index = () => {
     
     localStorage.setItem('cart', JSON.stringify(cartArray));
     setCart(JSON.parse(localStorage.getItem("cart")));
-    setTotal(cart.reduce((total, product) => total + (product.quantity * product.price), 0));
-    setTotalQuantity(cart.reduce((total, product) => total + (product.quantity), 0));
+  }
+
+  //Utilisation d'une fonction de rendu (pratique pour utilser des conditions avec if et tt)
+  const renderTotalAmount = () => {
+    return (
+      <p>Montant total : {cart.reduce((total, product) => total + (product.quantity * product.price), 0)}</p>
+    );
+  }
+
+  //Deuxième manière de faire pour afficher le total, toujours en utilisant une fonction de rendu
+  const renderTotalQuantity = () => {
+    return cart.reduce((total, product) => total + (product.quantity), 0);
   }
 
   return (
     <div>
       <TitlePage title="Panier" />
 
+      {renderTotalAmount()}
+
+      <p>Total Quantité : {renderTotalQuantity()} </p>
+
       <table>
         <thead>
           <tr>
             <th>Nom</th>
             <th>Prix</th>
-            <th>Quantité : {totalQuantity}</th>
-            <th>Total : {(total).toFixed(2)}€</th>
+            <th>Quantité</th>
+            <th>Total</th>
             <th></th>
           </tr>
         </thead>
