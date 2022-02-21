@@ -71,7 +71,7 @@ const Index = () => {
             <th>Nom</th>
             <th>Prix</th>
             <th>Quantité : {totalQuantity}</th>
-            <th>Total : {total}€</th>
+            <th>Total : {(total).toFixed(2)}€</th>
             <th></th>
           </tr>
         </thead>
