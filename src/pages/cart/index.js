@@ -16,8 +16,9 @@ const Index = () => {
 
     console.log(element);
     const indexOfExistingProduct = cartArray.findIndex(productItem => productItem.id === element.id);
-    cartArray[indexOfExistingProduct].splice();
-
+    cartArray.splice(indexOfExistingProduct);
+    localStorage.setItem('cart', JSON.stringify(cartArray));
+    setCart(JSON.parse(localStorage.getItem("cart")));
   }
 
   const manageQuantity = (element, increment) => {
