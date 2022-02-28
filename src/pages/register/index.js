@@ -8,11 +8,17 @@ import Button from "/src/components/Button";
 
 const Index = () => {
 
+  const submitRegister = (e) => {
+    console.log(e);
+    e.preventDefault();
+    console.log("send");
+  }
+
   return (
     <div>
         <TitlePage title="S'Inscrire" />
 
-        <form action="" method="">
+        <form className="form" onSubmit={(e) => submitRegister(e)}>
 
             <div className="form-group">
                 <Input classes="form-input" type="text" name="firstname" id="input-firstname" required="false" placeholder="Prénom" onChange={() => console.log('.')} />
