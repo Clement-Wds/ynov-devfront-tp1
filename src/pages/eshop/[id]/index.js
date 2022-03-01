@@ -1,37 +1,24 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
-import TitlePage from "../../../components/TitlePage";
-import ProductPrice from "../../../components/ProductPrice";
-import Button from "../../../components/Button";
+import TitlePage from "/src/components/TitlePage";
+import ProductPrice from "/src/components/ProductPrice";
+import Button from "/src/components/Button";
+import productService from "/src/services/product.services";
 
 const Index = () => {
     const router = useRouter();
     const [product, setProduct] = useState();
 
-    const users = [
-        {
-            id: 1,
-            firstName:'Clement'
-        },
-        {
-            id: 2,
-            firstName:'Faouizi'
-        }
-    ]
-
-    const indexOfExistingUser = users.findIndex(user => user.id === 2);
-    console.log(indexOfExistingUser);
-    console.log(users[indexOfExistingUser].firstName);
-
-    //EXEMPLE
-    const myObj = {
-        prop1: 'test',
-        prop2: 'clement'
-    }
-
-    //Destructuration d'objet EXEMPLE
-    const {prop1, prop2} = myObj;
+    useEffect(() => {
+        if(!router.isReady) return;
+        const id = router.query.id;
+        productService.getProduct(id)
+          .then((data) => {
+            setProduct(data.data);
+          })
+        .catch(err=>console.log(err))
+    },[router.isReady]);
     
     const addToCart = (element) => {
         //On créer un nouvel objet avec une nouvelle propriété quantity
@@ -66,27 +53,14 @@ const Index = () => {
             cartArray.push(productToInsert);
             localStorage.setItem('cart', JSON.stringify(cartArray));
         }
-        
     }
-
-    useEffect(() => {
-
-        //Destructuration de l'objet router
-        const {id} = router.query;
-
-        fetch(`https://fakestoreapi.com/products/${id}`)
-            .then(res => res.json())
-            .then(data => setProduct(data))
-            .catch(err => console.error(err));
-
-    }, []);
 
     return (
         <div>
-            <TitlePage title={product && product.title} />
+            <TitlePage title={product && product.attributes.title} />
 
             <div className="text-center">
-                <ProductPrice price={product && product.price} currency="€"/>
+                <ProductPrice price={product && product.attributes.price} currency="€"/>
                 <Button type="button" classes="button button-primary" click={() => addToCart(product)} content="Ajouter au panier" />  
             </div>
         </div>

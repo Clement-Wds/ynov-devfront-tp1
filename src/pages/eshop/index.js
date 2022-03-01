@@ -1,27 +1,29 @@
 import { useEffect, useState } from "react";
 import TitlePage from "../../components/TitlePage";
 import ProductCard from "../../components/ProductCard";
+import productService from "/src/services/product.services";
 
 const Index = () => {
     const [products, setProducts] = useState();
 
     useEffect(() => {
-        fetch("https://fakestoreapi.com/products")
-        .then((res) => res.json())
-        .then((data) => {
-            setProducts(data);
-        },[]);
-    });
+        productService.getProducts()
+            .then((data) => {
+                setProducts(data.data),
+                console.log(data.data);
+          })
+        .catch(err=>console.log(err))
+      },[]);
 
     return (
         <div className="page-shop">
-        <TitlePage title="E-Shop" />
-        <div className="products-grid">
-            {products &&
-            products.map((product) => (
-            <ProductCard product={product} key={product.id}/>
-            ))}
-        </div>
+            <TitlePage title="Eshop" />
+            <div className="products-grid">
+                {products &&
+                products.map((product) => (
+                <ProductCard product={product} key={product.id}/>
+                ))}
+            </div>
         </div>
     );
 };

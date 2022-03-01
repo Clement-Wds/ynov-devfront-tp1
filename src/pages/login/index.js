@@ -15,8 +15,8 @@ const Index = () => {
         <form action="" method="">
 
             <div className="form-group">
-                <Input classes="form-input" type="email" name="email" id="input-email" required="true" placeholder="Email" onChange={() => console.log('.')} />
-                <Input classes="form-input" type="password" name="password" id="input-password" required="true" placeholder="Mot de passe" onChange={() => console.log('.')} />
+                <Input classes="form-input" label="EMAIL" type="email" name="email" id="input-email" required="true" placeholder="Email" onChange={() => console.log('.')} />
+                <Input classes="form-input" label="MOT DE PASSE" type="password" name="password" id="input-password" required="true" placeholder="Mot de passe" onChange={() => console.log('.')} />
 
                 <Button type="submit" classes="button button-primary" click={() => console.log('.')} content="Se connecter" />
                 <Link href="/register">

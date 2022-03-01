@@ -6,14 +6,14 @@ function ProductCard(props) {
   return (
     <div className="product-card">
         <div className="product-header">
-            <img src={props.product.image} alt={props.product.title} />
+            <img src={`http://localhost:1337${props.product.attributes.image.data.attributes.url}`} alt={props.product.attributes.title} />
         </div>
         <div className="product-body">
-            <h2>{props.product.title}</h2>
-            <p>{props.product.price} € </p>
+            <h2>{props.product.attributes.title}</h2>
+            <p>{props.product.attributes.price} € </p>
         </div>
         <div className="product-footer">
-          <Button type="button" classes="button button-primary" click={() => console.log(props.product)} content="Ajouter au panier" />
+          <Button type="button" classes="button button-primary" click={() => console.log("click")} content="Ajouter au panier" />
           <Link href={`/eshop/${props.product.id}`}>
             <a>
               Voir le Produit
