@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from "react";
 import Link from 'next/link';
-import { useRouter, useState } from 'next/router';
+import { useRouter } from 'next/router';
 
 import TitlePage from "/src/components/TitlePage";
 import Input from "/src/components/Input";
@@ -8,20 +8,19 @@ import Button from "/src/components/Button";
 
 const Index = () => {
 
-  const [user, SetUser] = useState({});
+  const [user, setUser] = useState({});
 
-  const submitLogin = (e) => {
-    e.preventDefault();
-    console.log(user);
-    
-    
-  }
+    const submitLogin = (e) => {
+      e.preventDefault();
+      console.log(user);
+      userService.register(user).then(data => console.log(data)).catch(err => console.log(err));
+    }
 
   return (
     <div>
         <TitlePage title="Se connecter" />
 
-        <form action="" method="">
+        <form className="form" onSubmit={(e) => submitLogin(e)}>
 
             <div className="form-group">
                 <Input 
@@ -30,9 +29,9 @@ const Index = () => {
                   type="email" 
                   name="email" 
                   id="input-email" 
-                  required="true" 
+                  required={true} 
                   placeholder="Email" 
-                  onChange={() => console.log('.')} 
+                  onChange={ (e) => setUser({...user, email:e.target.value})}
                 />
                 <Input 
                   classes="form-input" 
@@ -40,12 +39,12 @@ const Index = () => {
                   type="password" 
                   name="password" 
                   id="input-password" 
-                  required="true" 
+                  required={true}
                   placeholder="Mot de passe" 
-                  onChange={() => console.log('.')} 
+                  onChange={ (e) => setUser({...user, password:e.target.value})}
                 />
 
-                <Button type="submit" classes="button button-primary" click={() => console.log('.')} content="Se connecter" />
+                <Button type="submit" classes="button button-primary" content="Se connecter" />
                 <Link href="/register">
                     <a>S'inscrire</a>
                 </Link>

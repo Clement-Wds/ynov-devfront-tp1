@@ -7,12 +7,15 @@ import TitlePage from "/src/components/TitlePage";
 import Input from "/src/components/Input";
 import Button from "/src/components/Button";
 import userService from "/src/services/user.service";
+import Modal from "/src/components/Modal";
 
 const Index = () => {
   const [user, setUser] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   const submitRegister = (e) => {
     e.preventDefault();
+    setShowModal(true);
     console.log(user);
     userService.register(user)
       .then(
@@ -30,7 +33,13 @@ const Index = () => {
 
   return (
     <div>
-        <TitlePage title="S'Inscrire" />
+
+      <Modal title="Titre modal" isActive={showModal} closefunction>
+        <p>Text 1</p>
+        <p>Text 2</p>
+      </Modal>
+      
+      <TitlePage title="S'Inscrire" />
 
         <form className="form" onSubmit={(e) => submitRegister(e)}>
 
