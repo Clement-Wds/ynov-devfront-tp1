@@ -14,7 +14,20 @@ const Index = () => {
   const submitRegister = (e) => {
     e.preventDefault();
     console.log(user);
-    userService.register(user).then(data => console.log(data)).catch(err => console.log(err));
+    userService.register(user)
+      .then(
+        (data) => {
+          console.log(data),
+          localStorage.setItem('JWT', data.jwt);
+          window.location.href = '/profile';
+        } 
+      )
+      .catch(
+          (err) => {
+            console.log(err);
+            localStorage.setItem('JWT', err);
+        }
+      );
   }
 
   return (
