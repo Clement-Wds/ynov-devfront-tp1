@@ -1,12 +1,21 @@
 import React from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter, useState } from 'next/router';
 
 import TitlePage from "/src/components/TitlePage";
 import Input from "/src/components/Input";
 import Button from "/src/components/Button";
 
 const Index = () => {
+
+  const [user, SetUser] = useState({});
+
+  const submitLogin = (e) => {
+    e.preventDefault();
+    console.log(user);
+    
+    
+  }
 
   return (
     <div>
@@ -15,8 +24,26 @@ const Index = () => {
         <form action="" method="">
 
             <div className="form-group">
-                <Input classes="form-input" label="EMAIL" type="email" name="email" id="input-email" required="true" placeholder="Email" onChange={() => console.log('.')} />
-                <Input classes="form-input" label="MOT DE PASSE" type="password" name="password" id="input-password" required="true" placeholder="Mot de passe" onChange={() => console.log('.')} />
+                <Input 
+                  classes="form-input" 
+                  label="EMAIL" 
+                  type="email" 
+                  name="email" 
+                  id="input-email" 
+                  required="true" 
+                  placeholder="Email" 
+                  onChange={() => console.log('.')} 
+                />
+                <Input 
+                  classes="form-input" 
+                  label="MOT DE PASSE" 
+                  type="password" 
+                  name="password" 
+                  id="input-password" 
+                  required="true" 
+                  placeholder="Mot de passe" 
+                  onChange={() => console.log('.')} 
+                />
 
                 <Button type="submit" classes="button button-primary" click={() => console.log('.')} content="Se connecter" />
                 <Link href="/register">

@@ -24,9 +24,9 @@ const Index = () => {
         //On créer un nouvel objet avec une nouvelle propriété quantity
         let productToInsert = {
             id: element.id,
-            title: element.title,
-            image: element.image,
-            price: element.price,
+            title: element.attributes.title,
+            image: element.attributes.image,
+            price: element.attributes.price,
             quantity: 1
         };
 

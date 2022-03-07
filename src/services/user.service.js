@@ -9,6 +9,9 @@ export default {
             },
             body: JSON.stringify(payload)
         })
-        .then((res) => res.json())
+        .then((res) => {
+            res.json()
+            window.location.href = '/profile';
+        });
     }
 }

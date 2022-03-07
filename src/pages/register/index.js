@@ -19,13 +19,11 @@ const Index = () => {
         (data) => {
           console.log(data),
           localStorage.setItem('JWT', data.jwt);
-          window.location.href = '/profile';
         } 
       )
       .catch(
           (err) => {
             console.log(err);
-            localStorage.setItem('JWT', err);
         }
       );
   }
@@ -49,7 +47,7 @@ const Index = () => {
                 />
                 <Input 
                   classes="form-input" 
-                  label="EMAIL" 
+                  label="EMAIL"
                   type="email" 
                   name="email" 
                   id="input-email" 
