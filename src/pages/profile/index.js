@@ -14,7 +14,7 @@ const [user, setUser] = useState();
             .catch(err=>console.log(err))
     },[])
 
-const index = () => {
+const Index = () => {
   return (
     <div>
 				<TitlePage title="Profil" />
