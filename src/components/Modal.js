@@ -18,10 +18,16 @@ const Modal = (props) => {
             </div>
             <div className="modal-content">{props.children}</div>
             <div className="modal-actions">
-              <button className="button button-dark" onClick={props.closefunction}>
+              <button
+                className="button button-dark"
+                onClick={props.closefunction}
+              >
                 Annuler
               </button>
-              <button className="button button-primary" onClick={props.validateFunction}>
+              <button
+                className="button button-primary"
+                onClick={props.validateFunction}
+              >
                 Valider
               </button>
             </div>

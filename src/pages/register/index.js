@@ -10,31 +10,29 @@ import userService from "/src/services/user.service";
 import Modal from "/src/components/Modal";
 
 const Index = () => {
+  const router = useRouter()
   const [user, setUser] = useState({});
-  const [showModal, setShowModal] = useState(false);
 
-  const submitRegister = (e) => {
-    e.preventDefault();
-    setShowModal(true);
-    console.log(user);
-    userService.register(user)
-      .then(
-        (data) => {
-          console.log(data),
-          localStorage.setItem('JWT', data.jwt);
-        } 
-      )
-      .catch(
+    const submitRegister = (e) => {
+      e.preventDefault();
+      userService.register(user)
+        .then(
+          (data) => {
+            console.log(data);
+            localStorage.setItem('jwt', data.jwt);
+            router.push('/profil')
+          }
+        )
+        .catch(
           (err) => {
-            console.log(err);
-        }
-      );
-  }
+            console.log(err)
+          });
+    }
 
   return (
     <div>
 
-      <Modal title="Titre modal" isActive={showModal} closefunction>
+      <Modal title="Titre modal">
         <p>Text 1</p>
         <p>Text 2</p>
       </Modal>
