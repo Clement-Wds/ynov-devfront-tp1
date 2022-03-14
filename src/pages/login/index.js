@@ -13,7 +13,7 @@ const Index = () => {
     const submitLogin = (e) => {
       e.preventDefault();
       console.log(user);
-      userService.register(user).then(data => console.log(data)).catch(err => console.log(err));
+      userService.login(user).then(data => console.log(data)).catch(err => console.log(err));
     }
 
   return (
